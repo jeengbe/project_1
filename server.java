@@ -64,7 +64,7 @@ public class server implements Runnable {
     String type = "TLSv1.2";
     try {
       ServerSocketFactory ssf = getServerSocketFactory(type);
-      ServerSocket ss = ssf.createServerSocket(port);
+      ServerSocket ss = ssf.createServerSocket(port, 0, InetAddress.getByName(null));
       ((SSLServerSocket)ss).setNeedClientAuth(true); // enables client authentication
       new server(ss);
     } catch (IOException e) {

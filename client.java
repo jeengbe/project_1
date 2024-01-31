@@ -21,15 +21,18 @@ public class client {
     for (int i = 0; i < args.length; i++) {
       System.out.println("args[" + i + "] = " + args[i]);
     }
-    if (args.length < 2) {
-      System.out.println("USAGE: java client host port");
+    if (args.length < 1) {
+      System.out.println("USAGE: java client [host] port");
       System.exit(-1);
     }
     try { /* get input parameters */
-      host = args[0];
-      port = Integer.parseInt(args[1]);
+      if (args.length == 1) port = Integer.parseInt(args[0]);
+      else {
+        host = args[0];
+        port = Integer.parseInt(args[1]);
+      }
     } catch (IllegalArgumentException e) {
-      System.out.println("USAGE: java client host port");
+      System.out.println("USAGE: java client [host] port");
       System.exit(-1);
     }
 
